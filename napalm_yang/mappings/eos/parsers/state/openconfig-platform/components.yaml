@@ -1,0 +1,105 @@
+---
+metadata:
+    processor: JSONParser
+    execute:
+        - method: _oc_platform
+
+components:
+    _process:
+        - path: components
+          from: components.0
+    component:
+        _process:
+            - path: component
+        config:
+            _process: not_implemented
+        properties:
+            _process:
+                - path: properties
+                  when: "{{ bookmarks.parent.get('properties', 'None') != 'None' }}"
+                - mode: gate
+                  when: "{{ bookmarks.parent.get('properties', 'None') == 'None' }}"
+            property:
+                _process:
+                    - path: property
+                config:
+                    _process: not_implemented
+                state:
+                    _process:
+                        - path: state
+                    configurable:
+                        _process: not_implemented
+                    name:
+                        _process:
+                            - path: name
+                    value:
+                        _process:
+                            - path: value
+        state:
+            _process:
+                - path: state
+            description:
+                _process:
+                    - path: description
+                      when: "{{ bookmarks.parent.get('description', 'None') != 'None' }}"
+            id:
+                _process: not_implemented
+            mfg-name:
+                _process:
+                    - path: mfg-name
+                      when: "{{ bookmarks.parent.get('mfg-name', 'None') != 'None' }}"
+            name:
+                _process:
+                    - mode: value
+                      value: "{{ parent_key }}"
+            part-no:
+                _process:
+                    - path: part-no
+                      when: "{{ bookmarks.parent.get('part-no', 'None') != 'None' }}"
+            serial-no:
+                _process: 
+                    - path: serial-no
+                      when: "{{ bookmarks.parent.get('serial-no', 'None') != 'None' }}"
+            temperature:
+                _process:
+                - path: temperature
+                  when: "{{ bookmarks.parent.get('temperature', 'None') != 'None' }}"
+                - mode: gate
+                  when: "{{ bookmarks.parent.get('temperature', 'None') == 'None' }}"
+                avg:
+                    _process: not_implemented
+                instant:
+                    _process:
+                        - path: instant
+                          when: "{{ bookmarks.parent.get('instant', 'None') != 'None' }}"
+                max:
+                    _process:
+                        - path: max
+                          when: "{{ bookmarks.parent.get('max', 'None') != 'None' }}"
+                min:
+                    _process: not_implemented
+            type:
+                _process:
+                    - path: type
+                      when: "{{ bookmarks.parent.get('type', 'None') != 'None' }}"
+            version:
+                _process:
+                    - path: version
+                      when: "{{ bookmarks.parent.get('version', 'None') != 'None' }}"
+        subcomponents:
+            _process:
+                - path: subcomponents
+                  when: "{{ bookmarks.parent.get('subcomponents', 'None') != 'None' }}"
+                - mode: gate
+                  when: "{{ bookmarks.parent.get('subcomponents', 'None') == 'None' }}"
+            subcomponent:
+                _process:
+                    - path: subcomponent
+                config:
+                    _process: not_implemented
+                state:
+                    _process:
+                        - path: state
+                    name:
+                        _process:
+                            - path: name
